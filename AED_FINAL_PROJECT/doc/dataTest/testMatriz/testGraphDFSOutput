@@ -1,0 +1,8 @@
+A, G, B, H, C, E, F, D
+B, H, C, E, G, D, F, A
+C, H, F, B, G, E, A, D
+D, F, H, C, E, B, G, A
+E, C, H, F, B, G, D, A
+F, H, C, E, B, G, D, A
+G, B, H, C, E, A, D, F
+H, C, E, B, F, D, G, A
