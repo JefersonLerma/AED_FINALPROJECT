@@ -6,6 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import grafo.IGrafo;
 import grafo.lista.GrafoLista;
 import grafo.matriz.GrafoMatriz;
 
@@ -64,6 +65,22 @@ public class SITM_Cali {
 	//Ahora voy a leer la matriz de adyacencias para poder agregarlas a los grafos.
 		for(int x = 0; x<estaciones.size(); x++) {
 			Estacion actual = estaciones.get(x);
+			String linea = br.readLine();
+			String [] adya = linea.split(" ");
+			Estacion[] adyacentes = new Estacion[contarTamaño(adya)];
+			int contador = 0;
+			String[] nombres = new String[contarTamaño(adya)];
+			double[] pesos = new double[contarTamaño(adya)];
+			for(int y = 0; y<estaciones.size(); y++) {
+		     if(adya[y].equals("1")) {
+		    	adyacentes[contador] = estaciones.get(y);
+		    	nombres[contador] = estaciones.get(y).darNombreEstacion();
+		    	pesos[contador] = estaciones.get(y).darLasCalles()[contador].darTiempoDeViaje();
+		    	contador ++;
+		     }
+			}
+			
+       matrizEstacion.crearNodo(actual, adyacentes, nombres, pesos, IGrafo.NO_DIRIGIDO);
 		}
 	
 	}
@@ -90,6 +107,16 @@ public class SITM_Cali {
 	
 	public void cambiarMatrizEstacion(GrafoMatriz<Estacion> pMatrizEstacion) {
 		matrizEstacion = pMatrizEstacion;
+	}
+	
+	public int contarTamaño(String [] arreglo) {
+		int contador = 0;
+		for(int i = 0; i<arreglo.length; i++) {
+			if(arreglo[i].equals("1")) {
+				contador++;
+			}
+		}
+		return contador;
 	}
 
 }
