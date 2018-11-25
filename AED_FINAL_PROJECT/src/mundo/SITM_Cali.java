@@ -18,6 +18,10 @@ public class SITM_Cali {
 	
 	private GrafoMatriz<Estacion> matrizEstacion;
 	
+	private Estacion pordefecto;
+	private Estacion pordefecto1;
+	
+	
 	public SITM_Cali() {
 		nombre = "MIO";
 		listaEstacion = new GrafoLista<Estacion>();
@@ -27,20 +31,21 @@ public class SITM_Cali {
 	public void leerMatriz(File archivo)  throws IOException{
 		FileReader reader = new FileReader(archivo);	
 		BufferedReader br = new BufferedReader(reader);
-		
+	
 		//Este arraylist va almacenar las estaciones (que vienen en orden alfabetico), y con el me voy a ayudar para encontrar las adyacencias.
 		ArrayList<Estacion> estaciones= new ArrayList<Estacion>();
 		
 		//Leo la cantidad de estaciones
 		int cantidadEstaciones = Integer.parseInt(br.readLine());
-		
+	
 		//tengo que crearme esas estaciones
 		for(int i =0; i<cantidadEstaciones; i++) {
 			String[] datosEstacion = br.readLine().split(",");
 			String nombreEstacion = datosEstacion[0];
-			int cantidadCalles = Integer.parseInt(br.readLine());
+			int cantidadCalles = Integer.parseInt(datosEstacion[1]);
+
 			Calle[] lasCalles = new Calle[cantidadCalles];
-			
+		
 			//para las estaciones necesito las calles asi que las creo.
 			for(int j = 0; j<cantidadCalles; j++) {
 				String [] datosCalle= br.readLine().split(",");
@@ -59,6 +64,7 @@ public class SITM_Cali {
 			// aqui me creo la estacion con sus calles.
 			Estacion actual = new Estacion(nombreEstacion, lasCalles);
 			estaciones.add(actual);
+
 		}
 		
 //TODO
@@ -81,6 +87,15 @@ public class SITM_Cali {
 			}
 			
        matrizEstacion.crearNodo(actual, adyacentes, nombres, pesos, IGrafo.NO_DIRIGIDO);
+       if(actual.darNombreEstacion().equals("Melendez")) {
+       pordefecto = actual;
+       }
+       
+       if(actual.darLasCalles().equals("La Casa del Dani")) {
+    	   pordefecto1 = actual;
+       }
+       
+       
 		}
 	
 	}
@@ -117,6 +132,16 @@ public class SITM_Cali {
 			}
 		}
 		return contador;
+	}
+	
+	// este es un nodo que dejo inicializado por defecto, por si tengo que correr el bfs o el dfs, para empezar desde este punto
+	
+	public Estacion darPordefecto() {
+		return pordefecto;
+	}
+	
+	public Estacion darPordefecto1() {
+		return pordefecto1;
 	}
 
 }

@@ -33,7 +33,9 @@ public class Estacion {
     	lasCalles = pLasCalles;
     }
 	
-    
+    public String toString() {
+    	return nombreEStacion + lasCalles[0].darNombreCalle();
+    }
 
 	
 }
