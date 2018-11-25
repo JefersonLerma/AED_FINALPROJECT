@@ -35,7 +35,7 @@ public class Estacion {
     
     //PAPI ESTOY WEED
     //podés usar este arraylist por silas
-	public void emmNombreEstaciones() {
+	public void emmEventicosEstaciones() {
 		
 		String nombresESTACIONES[] = new String[10]; 
 		nombresESTACIONES[0] = "Unidad Deportiva";
@@ -48,9 +48,6 @@ public class Estacion {
 		nombresESTACIONES[7] = "Buitrera";
 		nombresESTACIONES[8] = "Univalle";
 		nombresESTACIONES[9] = "Universidades";
-		
-		String rutas[] = new String[10];
-		
 		
 		
 	}
