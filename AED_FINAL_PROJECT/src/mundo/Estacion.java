@@ -47,7 +47,7 @@ public class Estacion {
 		nombresESTACIONES[6] = "Meléndez";
 		nombresESTACIONES[7] = "Buitrera";
 		nombresESTACIONES[8] = "Univalle";
-		nombresESTACIONES[9] = "Universidades";
+		//
 		
 		
 	}
