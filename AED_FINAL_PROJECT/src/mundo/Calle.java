@@ -6,6 +6,8 @@ public class Calle {
 	
 	private String[] paradas;
 	
+	
+	
 	public Calle(String pNombreCalles, String[] pParadas) {
 		nombreCalle = pNombreCalles;
 		paradas = pParadas;
@@ -38,7 +40,7 @@ public class Calle {
 	}
 
 	
-	//Este metodo retorna, cuanto tardaria un bus en recorres todas las estaciones.
+	//Este metodo retorna, cuanto tardaria un bus en recorrer todas las estaciones.
 	public double darTiempoDeViaje() {
 		return paradas.length*3.0;
 	}
