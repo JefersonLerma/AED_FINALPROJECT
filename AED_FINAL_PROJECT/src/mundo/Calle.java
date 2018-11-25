@@ -37,4 +37,9 @@ public class Calle {
 		return mensaje;
 	}
 
+	
+	//Este metodo retorna, cuanto tardaria un bus en recorres todas las estaciones.
+	public double darTiempoDeViaje() {
+		return paradas.length*3.0;
+	}
 }
