@@ -55,43 +55,48 @@ public class SITM_Cali {
 				// para las calles necesito las paradas asi que las leo.
 				for(int k = 0; k<paradas.length; k++) {
 					paradas[k] = datosCalle[k+1];
+				
 				}
 				
 				// aqui me creo las calles
 		     lasCalles[j] = new Calle(nombreCalle, paradas);
+		   
 			}
+			
+			  
+		  
 			
 			// aqui me creo la estacion con sus calles.
 			Estacion actual = new Estacion(nombreEstacion, lasCalles);
+		
 			estaciones.add(actual);
-
 		}
 		
 //TODO
 	//Ahora voy a leer la matriz de adyacencias para poder agregarlas a los grafos.
+	
 		for(int x = 0; x<estaciones.size(); x++) {
 			Estacion actual = estaciones.get(x);
 			String linea = br.readLine();
 			String [] adya = linea.split(" ");
 			Estacion[] adyacentes = new Estacion[contarTamaño(adya)];
-			int contador = 0;
 			String[] nombres = new String[contarTamaño(adya)];
 			double[] pesos = new double[contarTamaño(adya)];
+			int contador = 0;
 			for(int y = 0; y<estaciones.size(); y++) {
 		     if(adya[y].equals("1")) {
 		    	adyacentes[contador] = estaciones.get(y);
 		    	nombres[contador] = estaciones.get(y).darNombreEstacion();
-		    	pesos[contador] = estaciones.get(y).darLasCalles()[contador].darTiempoDeViaje();
+		    	pesos[contador] = estaciones.get(x).darLasCalles()[contador].darTiempoDeViaje();	
 		    	contador ++;
 		     }
 			}
 			
        matrizEstacion.crearNodo(actual, adyacentes, nombres, pesos, IGrafo.NO_DIRIGIDO);
-       if(actual.darNombreEstacion().equals("Melendez")) {
+       if(actual.darNombreEstacion().equals("Estacion A")) {
        pordefecto = actual;
        }
-       
-       if(actual.darLasCalles().equals("La Casa del Dani")) {
+       if(actual.darNombreEstacion().equals("Estacion E")) {
     	   pordefecto1 = actual;
        }
        

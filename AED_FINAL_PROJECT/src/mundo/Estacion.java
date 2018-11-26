@@ -34,7 +34,7 @@ public class Estacion {
     }
 	
     public String toString() {
-    	return nombreEStacion + lasCalles[0].darNombreCalle();
+    	return nombreEStacion + "  ";
     }
 
 	

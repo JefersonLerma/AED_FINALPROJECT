@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import grafo.matriz.RutaMatriz;
 import grafo.matriz.RutasMatriz;
 
 public class PruebaInterfaz {
@@ -12,7 +13,7 @@ public class PruebaInterfaz {
 	private static SITM_Cali xd;
 	public static void main(String [] args) throws IOException {
 
-File archivo = new File("./doc/prueba1.txt");
+File archivo = new File("./doc/prueba2.txt");
 xd = new SITM_Cali();
 
 	xd.leerMatriz(archivo);
@@ -31,11 +32,30 @@ xd = new SITM_Cali();
 	Estacion miEstacion = new Estacion("La Casa del Dani", lasCalles);
 	
 ArrayList<Estacion> xddd = xd.darMatrizEstacion().BFS(xd.darPordefecto());
+RutaMatriz<Estacion>[][] ajam = xd.darMatrizEstacion().floydWarshall();
 
-for(int i = 0; i<xddd.size(); i++) {
-	System.out.println(xddd.get(i).toString());
+
+String mensaje = "";
+String mensaje2  = "";
+for(int d =0; d<ajam.length; d++) {
+	for (int r = 0; r<ajam[0].length; r++) {
+		int peso = (int) ajam[d][r].getPeso();
+		mensaje2 += ajam[d][r].toString() + "        " + "\n";
+		mensaje += peso+"        ";
+	}
+	mensaje+="\n";
 }
+//TODO esto es para mostrar el floyd.
+//System.out.println(mensaje);
+System.out.println("POR FLOYD///////////////////////////////////////////////////////////");
+System.out.println(mensaje2);
 
+//para probar con dikestra.
+
+Estacion inicio = xd.darPordefecto();
+Estacion fin = xd.darPordefecto1();
+System.out.println("ALGORITMO DE DIKESTRA!!!!!!!!///////////////////////////////////////////////");
+System.out.println(xd.darMatrizEstacion().dijsktraParcial(inicio, fin).toString());
 
   
 	}
