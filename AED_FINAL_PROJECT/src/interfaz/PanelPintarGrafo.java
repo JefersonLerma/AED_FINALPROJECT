@@ -71,7 +71,10 @@ public class PanelPintarGrafo extends JPanel {
 		if(interfazPrincipal.darContador() ==0) {
 			g.setColor(Color.BLACK);
 		}else {
-			g.setColor(asignarColor(randomColor()));
+			g.setColor(asignarColor(interfazPrincipal.darContador()));
+			if(interfazPrincipal.darContador() == 9) {
+				interfazPrincipal.cambiarContador(0);
+			}
 		}
 		
 		

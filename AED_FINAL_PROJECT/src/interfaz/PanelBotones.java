@@ -41,6 +41,9 @@ public class PanelBotones extends JPanel implements ActionListener{
 
 	private JComboBox<String> opcionesPartida;
 	private JComboBox<String> opcionesLlegada;
+	
+	private Estacion estacionPartida;
+	private Estacion estacionLlegada;
 
 	InterfazPrincipal_SITM interfaz;
 	
@@ -138,8 +141,8 @@ public class PanelBotones extends JPanel implements ActionListener{
 			String llegada = opcionesLlegada.getSelectedItem()+"";
 
 
-			Estacion estacionPartida = ejecutarInformacionDijsktra(interfaz.darGrafoListaSITM().getVertices(), partida);
-			Estacion estacionLlegada  = ejecutarInformacionDijsktra(interfaz.darGrafoListaSITM().getVertices(), llegada);
+			 estacionPartida = ejecutarInformacionDijsktra(interfaz.darGrafoListaSITM().getVertices(), partida);
+			 estacionLlegada  = ejecutarInformacionDijsktra(interfaz.darGrafoListaSITM().getVertices(), llegada);
 
 			try {
 				interfaz.mostrarAlgoritmoDijstra(estacionPartida, estacionLlegada);
@@ -189,6 +192,28 @@ public class PanelBotones extends JPanel implements ActionListener{
 	public void setCuantasDijkestra(int cuantasDijkestra) {
 		this.cuantasDijkestra = cuantasDijkestra;
 	}
+
+
+	public Estacion getEstacionPartida() {
+		return estacionPartida;
+	}
+
+
+	public void setEstacionPartida(Estacion estacionPartida) {
+		this.estacionPartida = estacionPartida;
+	}
+
+
+	public Estacion getEstacionLlegada() {
+		return estacionLlegada;
+	}
+
+
+	public void setEstacionLlegada(Estacion estacionLlegada) {
+		this.estacionLlegada = estacionLlegada;
+	}
+	
+	
 	
 	
 }

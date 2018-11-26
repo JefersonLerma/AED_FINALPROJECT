@@ -23,6 +23,7 @@ public class InterfazPrincipal_SITM extends JFrame{
 	private PanelPintarGrafo panelPintarGrafo;
 	private PanelBotones panelBotones;
 	private PanelTablaInformacion panelTablaInformacion;
+
 	
 	
 	public InterfazPrincipal_SITM(){
@@ -34,13 +35,15 @@ public class InterfazPrincipal_SITM extends JFrame{
 		panelTablaInformacion = new PanelTablaInformacion();
 		panelBotones = new PanelBotones(this);		
 		add(panelBotones,  BorderLayout.SOUTH);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setResizable(false);
 		//pack();
 	}
 	
 	
 	public boolean cargarDeArchivo(){
 		boolean cargoArchivo = false;
-		JFileChooser fileCh = new JFileChooser("./doc");
+		JFileChooser fileCh = new JFileChooser("./doc/archivos");
 		int opcion = fileCh.showOpenDialog(this);
 		switch(opcion){	
 			case JFileChooser.APPROVE_OPTION:
@@ -143,6 +146,10 @@ public class InterfazPrincipal_SITM extends JFrame{
 		return mensaje;
 	}
 	
+	public void cambiarContador(int n) {
+		panelBotones.setCuantasDijkestra(n);
+	}
+	
 	public String mostarDFS() {
 		String mensaje = "";
 		ArrayList<Estacion> bfs = darGrafoListaSITM().DFS(mundo.darPordefecto());
@@ -152,7 +159,17 @@ public class InterfazPrincipal_SITM extends JFrame{
 		return mensaje;
 	}
 	
+		
+	public Estacion darLLegada() {
+		return panelBotones.getEstacionLlegada();
+	}
+	
+	public Estacion darPartida() {
+		return panelBotones.getEstacionPartida();
+	}
+	
 	public void visualizarDistinto() {
 		panelPintarGrafo.repaint();
 	}
+	
 }
