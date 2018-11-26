@@ -93,14 +93,10 @@ public class SITM_Cali {
 			}
 			
        matrizEstacion.crearNodo(actual, adyacentes, nombres, pesos, IGrafo.NO_DIRIGIDO);
-       if(actual.darNombreEstacion().equals("Estacion A")) {
-       pordefecto = actual;
+        listaEstacion.crearNodo(actual, adyacentes, nombres, pesos, IGrafo.NO_DIRIGIDO);
+       if(x == 0) {
+    	   pordefecto = actual;
        }
-       if(actual.darNombreEstacion().equals("Estacion E")) {
-    	   pordefecto1 = actual;
-       }
-       
-       
 		}
 	
 	}
